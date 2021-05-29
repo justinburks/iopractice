@@ -17,7 +17,7 @@ supporting characters toward the bottom of the webpage to both display other
 skills that are difficult to express without visual representation.
 
 They will also be positioned toward the bottom, with the assumption that as
-users reach the bottom of a footer they generally begin to loose interest, to
+users reach the bottom of a footer they generally begin to lose interest, to
 keep users engaged these animations are designed surprise & guide them into
 further interaction.
 
