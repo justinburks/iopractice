@@ -41,16 +41,16 @@ the slider will continue to scroll by using the next elemnt/previous element to
 repopulate the viewport.
 
 The slider will also support infinite scrolling functionality that allows for a
-vast amount of additions/submissions while still maintaining functionality
+vast amount of additions/submissions while still maintaining functionality.
 
 Each card upon animation will dispaly two buttons in the top right and bottom
-left corner of the card the buttons will be a triangle shape that contain a logo
-for github with a link to view the code and a link logo to represent a link to
-the full webpage
+left corner of the card. The buttons will be a triangle shape that contain a
+logo for github with a link to view the code and a link logo to represent a link
+to the full webpage.
 
 Each card features title text only visible when the div is centered if the user
 hovers or clicks the title, the card translates up and out of view to display a
-description
+description.
 
 ### Module Two - "Contact/Social Links"
 
