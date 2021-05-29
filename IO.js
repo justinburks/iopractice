@@ -1,3 +1,8 @@
+const MODULE_ONE_TOTAL_CARD_COUNT = 100;
+
+function createModuleOneCards() {
+}
+
 
 let module = document.querySelector('.projectModule1');
 let divs = document.querySelectorAll('.img');
