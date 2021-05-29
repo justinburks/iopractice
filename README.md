@@ -27,9 +27,9 @@ further interaction.
 ### Module One - "Projects"
 
 Create a slider gallery that displays 5 div cards at any one time regardless of
-screen size when the slider is 25% in view animate the div cards to translate
+screen size. When the slider is 25% in view animate the div cards to translate
 horizontally from left to right one by one until they occupy their default
-positions after the sliders are in place scale all of the divs simultaneosly:
+positions. After the sliders are in place scale all of the divs simultaneosly:
 
     Center Div - 1.6 [posOne] | Surrounding Divs - 1.4 [posTwo] | Outer Divs - 1.2 [posThree]
 
