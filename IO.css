@@ -15,17 +15,41 @@ body {
     background-size: 100%;
 }
 
-#before_footer {
-    height: 100vh;
+#before-footer {
+    height: 110vh;
+}
+
+#after-footer {
+    height: 40vh;
+}
+
+.slider .module-one-card {
+    width: calc(100% / 5 - 2ex);
 }
 
 .module-one-card {
     display: inline-block;
-    height: 200px;
+    /* height: 200px; */
     margin: 1ex;
-    width: 250px;
+    /* width: 250px; */
+    vertical-align: center;
 }
 
+.extreme {
+    height: 12ex;
+}
+
+.side {
+    height: 14ex;
+}
+
+.center {
+    height: 16ex;
+}
+
+.store-future, .store-past {
+    display: none;
+}
 
 /*
 :root {

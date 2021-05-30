@@ -1,11 +1,18 @@
 const MODULE_ONE_TOTAL_CARD_COUNT = 10;
+const MODULE_ONE_CARDS_IN_VIEW = 5;
 const MODULE_ONE_BG_COLORS = [
   '#ffbcbc', '#ffd6a7', '#fff5a7', '#b8ffa7', '#a7e8ff', '#daa7ff'
 ];
 
+function init() {
+  createModuleOneCards();
+  seedModuleOne();
+  observeModuleOne();
+}
+
 function createModuleOneCards() {
   const moduleOneContainer = document.getElementById('module-one');
-  const storeEl = moduleOneContainer.getElementsByClassName('store')[0];
+  const storeEl = moduleOneContainer.getElementsByClassName('store-future')[0];
   for (let i = 0; i < MODULE_ONE_TOTAL_CARD_COUNT; i++) {
     let el = document.createElement('div');
     el.style.backgroundColor = MODULE_ONE_BG_COLORS[
@@ -15,31 +22,44 @@ function createModuleOneCards() {
   }
 }
 
-
-let module = document.querySelector('.projectModule1');
-let divs = document.querySelectorAll('.img');
-let divArray = [...divs];
-let slider = document.querySelector('.slider');
-let div;
-
-let options = {
-    root: module,
-    rootMargin: '0px 25% 0px 25%',
-    threshold: [1],
+function seedModuleOne() {
+  const container = document.getElementById('module-one');
+  const sliderEl = container.getElementsByClassName('slider')[0];
+  const storeEl = container.getElementsByClassName('store-future')[0];
+  for (let i = 0; i < MODULE_ONE_CARDS_IN_VIEW; i++) {
+    sliderEl.appendChild(storeEl.firstChild);
+  }
+  remapModuleOneCardClasses();
 }
 
-function obFunc(entries) {
+function remapModuleOneCardClasses() {
+  let cards = document.getElementById('module-one').getElementsByClassName(
+    'module-one-card');
+  cards[0].className = 'module-one-card extreme';
+  cards[1].className = 'module-one-card side';
+  cards[Math.floor(MODULE_ONE_CARDS_IN_VIEW / 2)].className = 'module-one-card center';
+  cards[MODULE_ONE_CARDS_IN_VIEW - 2].className = 'module-one-card side';
+  cards[MODULE_ONE_CARDS_IN_VIEW - 1].className = 'module-one-card extreme'
+}
+
+function observeModuleOne() {
+  function obFunc(entries) {
     entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            console.log(entry.target);
-        }
-    })
+      if (entry.isIntersecting) {
+        console.log(entry.target);
+      }
+    });
+  }
 
+  let ob = new IntersectionObserver(obFunc);
 
+  document.querySelectorAll(".slider").forEach((div) => {
+    ob.observe(div);
+  })
 }
 
-let ob = new IntersectionObserver(obFunc, options);
-
-divArray.forEach((div) => {
-    ob.observe(div);
-})
+// let module = document.querySelector('.projectModule1');
+// let divs = document.querySelectorAll('.img');
+// let divArray = [...divs];
+// let slider = document.querySelector('.slider');
+// let div;
