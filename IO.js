@@ -1,13 +1,24 @@
-const MODULE_ONE_TOTAL_CARD_COUNT = 10;
+const MODULE_ONE_TOTAL_CARD_COUNT = 20;
 const MODULE_ONE_CARDS_IN_VIEW = 5;
 const MODULE_ONE_BG_COLORS = [
   '#ffbcbc', '#ffd6a7', '#fff5a7', '#b8ffa7', '#a7e8ff', '#daa7ff'
 ];
 
+let moduleOneSliderVisible = false;
+
 function init() {
   createModuleOneCards();
   seedModuleOne();
   observeModuleOne();
+  // window.onscroll = onScroll;
+  document.body.onscroll = onScroll;
+}
+
+function onScroll(e) {
+  console.log(e);
+  if (moduleOneSliderVisible) {
+    console.log('Do something');
+  }
 }
 
 function createModuleOneCards() {
@@ -32,6 +43,28 @@ function seedModuleOne() {
   remapModuleOneCardClasses();
 }
 
+function advanceModuleOne(forward) {
+  const container = document.getElementById('module-one');
+  const storeFutureEl = container.getElementsByClassName('store-future')[0];
+  const storePastEl = container.getElementsByClassName('store-past')[0];
+  const sliderEl = container.getElementsByClassName('slider')[0];
+  if (forward) {
+    if (storeFutureEl.children.length == 0) {
+      console.log('Last card');
+      return;
+    }
+    storePastEl.appendChild(slider.firstChild);
+    slider.appendChild(storeFutureEl.firstChild);
+  } else {
+    if (storePastEl.children.length == 0) {
+      console.log('First card');
+      return;
+    }
+    slider.insertBefore(storePast.lastChild, slider.firstChild);
+    storeFuture.insertBefore(slide.lastChild, storeFuture.firstChild);
+  }
+}
+
 function remapModuleOneCardClasses() {
   let cards = document.getElementById('module-one').getElementsByClassName(
     'module-one-card');
@@ -46,7 +79,9 @@ function observeModuleOne() {
   function obFunc(entries) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log(entry.target);
+        moduleOneSliderVisible = true;
+      } else {
+        moduleOneSliderVisible = false;
       }
     });
   }
