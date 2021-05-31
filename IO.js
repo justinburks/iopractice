@@ -6,6 +6,7 @@ const MODULE_ONE_BG_COLORS = [
 
 let moduleOneSliderVisible = false;
 let lastScrollPosition = 0;
+let firstVisibleModuleOneCardIndex = 0;
 
 function init() {
   createModuleOneCards();
@@ -15,7 +16,6 @@ function init() {
 }
 
 function onScroll(e) {
-  console.log(e);
   if (moduleOneSliderVisible) {
     advanceModuleOne(window.scrollY > lastScrollPosition);
   }
@@ -24,47 +24,33 @@ function onScroll(e) {
 
 function createModuleOneCards() {
   const moduleOneContainer = document.getElementById('module-one');
-  const storeEl = moduleOneContainer.getElementsByClassName('store-future')[0];
+  const sliderEl = moduleOneContainer.getElementsByClassName('slider')[0];
   for (let i = 0; i < MODULE_ONE_TOTAL_CARD_COUNT; i++) {
     let el = document.createElement('div');
     el.textContent = '' + i;
     el.style.backgroundColor = MODULE_ONE_BG_COLORS[
       i % MODULE_ONE_BG_COLORS.length];
     el.className = 'module-one-card';
-    storeEl.appendChild(el);
-  }
-}
-
-function seedModuleOne() {
-  const container = document.getElementById('module-one');
-  const sliderEl = container.getElementsByClassName('slider')[0];
-  const storeEl = container.getElementsByClassName('store-future')[0];
-  for (let i = 0; i < MODULE_ONE_CARDS_IN_VIEW; i++) {
-    sliderEl.appendChild(storeEl.firstChild);
+    sliderEl.appendChild(el);
   }
   remapModuleOneCardClasses();
 }
 
+function seedModuleOne() {
+  // const container = document.getElementById('module-one');
+  // const sliderEl = container.getElementsByClassName('slider')[0];
+  // const storeEl = container.getElementsByClassName('store-future')[0];
+  // for (let i = 0; i < MODULE_ONE_CARDS_IN_VIEW; i++) {
+    // sliderEl.appendChild(storeEl.firstChild);
+  // }
+  remapModuleOneCardClasses();
+}
+
 function advanceModuleOne(forward) {
-  const container = document.getElementById('module-one');
-  const storeFutureEl = container.getElementsByClassName('store-future')[0];
-  const storePastEl = container.getElementsByClassName('store-past')[0];
-  const sliderEl = container.getElementsByClassName('slider')[0];
-  if (forward) {
-    if (storeFutureEl.children.length == 0) {
-      console.log('Last card');
-      return;
-    }
-    storePastEl.appendChild(sliderEl.firstChild);
-    sliderEl.appendChild(storeFutureEl.firstChild);
-  } else {
-    if (storePastEl.children.length == 0) {
-      console.log('First card');
-      return;
-    }
-    sliderEl.insertBefore(storePastEl.lastChild, sliderEl.firstChild);
-    storeFutureEl.insertBefore(sliderEl.lastChild, storeFutureEl.firstChild);
-  }
+  firstVisibleModuleOneCardIndex += forward ? 1 : -1;
+  firstVisibleModuleOneCardIndex = Math.max(firstVisibleModuleOneCardIndex, 0);
+  firstVisibleModuleOneCardIndex = Math.min(firstVisibleModuleOneCardIndex,
+                                            MODULE_ONE_TOTAL_CARD_COUNT);
   remapModuleOneCardClasses();
 }
 
@@ -74,16 +60,32 @@ function remapModuleOneCardClasses() {
   const sliderEl = document.getElementById('module-one').getElementsByClassName(
     'slider')[0];
   const margin = 10;
-  cards[0].className = 'module-one-card extreme';
-  cards[1].className = 'module-one-card side';
-  cards[Math.floor(MODULE_ONE_CARDS_IN_VIEW / 2)].className = 'module-one-card center';
-  cards[MODULE_ONE_CARDS_IN_VIEW - 2].className = 'module-one-card side';
-  cards[MODULE_ONE_CARDS_IN_VIEW - 1].className = 'module-one-card extreme'
+  console.log(firstVisibleModuleOneCardIndex);
+  cards[firstVisibleModuleOneCardIndex + 0].className = 'module-one-card extreme';
+  cards[firstVisibleModuleOneCardIndex + 1].className = 'module-one-card side';
+  cards[firstVisibleModuleOneCardIndex + 2].className = 'module-one-card center';
+  cards[firstVisibleModuleOneCardIndex + 3].className = 'module-one-card side';
+  cards[firstVisibleModuleOneCardIndex + 4].className = 'module-one-card extreme'
 
-  let x = margin;
   let width = (sliderEl.clientWidth - (MODULE_ONE_CARDS_IN_VIEW + 3) * margin) /
       MODULE_ONE_CARDS_IN_VIEW;
-  for (let i = 0; i < MODULE_ONE_CARDS_IN_VIEW; i++) {
+  const startIndex = Math.max(0, firstVisibleModuleOneCardIndex - 1);
+  const endIndex = Math.min(MODULE_ONE_TOTAL_CARD_COUNT, startIndex + MODULE_ONE_CARDS_IN_VIEW + 2);
+
+  let x = margin;
+  if (startIndex < firstVisibleModuleOneCardIndex) {
+    x = -width;
+  }
+
+  for (let i = 0; i < MODULE_ONE_TOTAL_CARD_COUNT; i++) {
+    cards[i].classList.add('off-screen');
+  }
+
+  for (let i = startIndex; i < endIndex; i++) {
+    if (i >= firstVisibleModuleOneCardIndex ||
+        i <= firstVisibleModuleOneCardIndex + MODULE_ONE_CARDS_IN_VIEW) {
+      cards[i].classList.remove('off-screen');
+    }
     cards[i].style.left = x + 'px';
     cards[i].style.width = width + 'px';
     x += width + margin;

@@ -31,7 +31,7 @@ body {
     bottom: -200px;
     font-size: 200%;
     left: 0px;
-    transition: left 0.2s ease-out, height 0.2s ease-out;
+    transition: left 0.2s ease-out, height 0.2s ease-out, opacity 0.2s ease-out;
 }
 
 .module-one-card {
@@ -41,6 +41,14 @@ body {
     position: absolute;
     text-align: center;
     vertical-align: bottom;
+}
+
+.off-screen {
+    opacity: 0;
+}
+
+.extreme, .side, .center {
+    opacity: 1;
 }
 
 .extreme {
