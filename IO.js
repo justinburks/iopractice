@@ -1,4 +1,4 @@
-const MODULE_ONE_TOTAL_CARD_COUNT = 20;
+const MODULE_ONE_TOTAL_CARD_COUNT = 30;
 const MODULE_ONE_CARDS_IN_VIEW = 5;
 const MODULE_ONE_BG_COLORS = [
   '#ffbcbc', '#ffd6a7', '#fff5a7', '#b8ffa7', '#a7e8ff', '#daa7ff'
@@ -15,7 +15,8 @@ function init() {
 }
 
 function onScroll(e) {
-  if (moduleOneSliderVisible) {
+  if (moduleOneSliderVisible &&
+      (Math.abs(window.scrollY - lastScrollPosition)) > 20) {
     advanceModuleOne(window.scrollY > lastScrollPosition);
     lastScrollPosition = window.scrollY;
   }
@@ -39,7 +40,7 @@ function advanceModuleOne(forward) {
   firstVisibleModuleOneCardIndex += forward ? 1 : -1;
   firstVisibleModuleOneCardIndex = Math.max(firstVisibleModuleOneCardIndex, 0);
   firstVisibleModuleOneCardIndex = Math.min(firstVisibleModuleOneCardIndex,
-                                            MODULE_ONE_TOTAL_CARD_COUNT);
+      MODULE_ONE_TOTAL_CARD_COUNT - MODULE_ONE_CARDS_IN_VIEW);
   remapModuleOneCardClasses();
 }
 
@@ -55,11 +56,20 @@ function remapModuleOneCardClasses() {
     cards[i].className = 'module-one-card';
   }
 
+  // This is a bit redundant and repetitive. Improve.
   cards[firstVisibleModuleOneCardIndex + 0].className = 'module-one-card extreme';
-  cards[firstVisibleModuleOneCardIndex + 1].className = 'module-one-card side';
-  cards[firstVisibleModuleOneCardIndex + 2].className = 'module-one-card center';
-  cards[firstVisibleModuleOneCardIndex + 3].className = 'module-one-card side';
-  cards[firstVisibleModuleOneCardIndex + 4].className = 'module-one-card extreme'
+  if (firstVisibleModuleOneCardIndex + 1 < MODULE_ONE_TOTAL_CARD_COUNT) {
+    cards[firstVisibleModuleOneCardIndex + 1].className = 'module-one-card side';
+  }
+  if (firstVisibleModuleOneCardIndex + 2 < MODULE_ONE_TOTAL_CARD_COUNT) {
+    cards[firstVisibleModuleOneCardIndex + 2].className = 'module-one-card center';
+  }
+  if (firstVisibleModuleOneCardIndex + 3 < MODULE_ONE_TOTAL_CARD_COUNT) {
+    cards[firstVisibleModuleOneCardIndex + 3].className = 'module-one-card side';
+  }
+  if (firstVisibleModuleOneCardIndex + 4 < MODULE_ONE_TOTAL_CARD_COUNT) {
+    cards[firstVisibleModuleOneCardIndex + 4].className = 'module-one-card extreme';
+  }
 
   let width = (sliderEl.clientWidth - (MODULE_ONE_CARDS_IN_VIEW + 3) * margin) /
       MODULE_ONE_CARDS_IN_VIEW;
@@ -73,14 +83,12 @@ function remapModuleOneCardClasses() {
   }
 
   for (let i = 0; i < MODULE_ONE_TOTAL_CARD_COUNT; i++) {
-    console.log('Adding offscreen for ' + i);
     cards[i].classList.add('off-screen');
   }
 
   for (let i = startIndex; i < endIndex; i++) {
     if (i >= firstVisibleModuleOneCardIndex &&
         i < firstVisibleModuleOneCardIndex + MODULE_ONE_CARDS_IN_VIEW) {
-      console.log('Removing offscreen for ' + i);
       cards[i].classList.remove('off-screen');
     }
     cards[i].style.left = x + 'px';
