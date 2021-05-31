@@ -71,11 +71,23 @@ function advanceModuleOne(forward) {
 function remapModuleOneCardClasses() {
   let cards = document.getElementById('module-one').getElementsByClassName(
     'module-one-card');
+  const sliderEl = document.getElementById('module-one').getElementsByClassName(
+    'slider')[0];
+  const margin = 10;
   cards[0].className = 'module-one-card extreme';
   cards[1].className = 'module-one-card side';
   cards[Math.floor(MODULE_ONE_CARDS_IN_VIEW / 2)].className = 'module-one-card center';
   cards[MODULE_ONE_CARDS_IN_VIEW - 2].className = 'module-one-card side';
   cards[MODULE_ONE_CARDS_IN_VIEW - 1].className = 'module-one-card extreme'
+
+  let x = margin;
+  let width = (sliderEl.clientWidth - (MODULE_ONE_CARDS_IN_VIEW + 3) * margin) /
+      MODULE_ONE_CARDS_IN_VIEW;
+  for (let i = 0; i < MODULE_ONE_CARDS_IN_VIEW; i++) {
+    cards[i].style.left = x + 'px';
+    cards[i].style.width = width + 'px';
+    x += width + margin;
+  }
 }
 
 function observeModuleOne() {

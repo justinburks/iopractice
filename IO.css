@@ -20,20 +20,25 @@ body {
 }
 
 #after-footer {
-    height: 110vh;
+    height: 130vh;
+}
+
+.slider {
+    position: relative;
 }
 
 .slider .module-one-card {
+    bottom: -200px;
     font-size: 200%;
     left: 0px;
-    transition: left 0.5s ease-out, height 0.2s ease-out;
-    width: calc(100% / 5 - 2ex);
+    transition: left 0.2s ease-out, height 0.2s ease-out;
 }
 
 .module-one-card {
     display: inline-block;
     margin: 1ex;
     padding: 1ex;
+    position: absolute;
     text-align: center;
     vertical-align: bottom;
 }
