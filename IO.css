@@ -24,6 +24,7 @@ body {
 }
 
 .slider .module-one-card {
+    font-size: 200%;
     left: 0px;
     transition: left 0.5s ease-out, height 0.2s ease-out;
     width: calc(100% / 5 - 2ex);
@@ -31,10 +32,10 @@ body {
 
 .module-one-card {
     display: inline-block;
-    /* height: 200px; */
     margin: 1ex;
-    /* width: 250px; */
-    vertical-align: center;
+    padding: 1ex;
+    text-align: center;
+    vertical-align: bottom;
 }
 
 .extreme {

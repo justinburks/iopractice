@@ -27,6 +27,7 @@ function createModuleOneCards() {
   const storeEl = moduleOneContainer.getElementsByClassName('store-future')[0];
   for (let i = 0; i < MODULE_ONE_TOTAL_CARD_COUNT; i++) {
     let el = document.createElement('div');
+    el.textContent = '' + i;
     el.style.backgroundColor = MODULE_ONE_BG_COLORS[
       i % MODULE_ONE_BG_COLORS.length];
     el.className = 'module-one-card';
