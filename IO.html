@@ -1,45 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>help</title>
-    <link rel="stylesheet" href="help.css">
+    <title>IntersectionObserver Practice</title>
+    <link rel="stylesheet" href="IO.css">
+    <script src="IO.js"></script>
 </head>
-<body>
-    <div class="projectModule1"> 
-        <div class="slider">
-        <div class="img" data-position="1" id="img1">   
-        <!--<img src ="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80">-->
-        </div>
-        <div class="img" data-position="2" id="img2">
-        <!--<img src ="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80">-->
-        </div>
-        <div class="img" data-position="3" id="img3">
-        <!--<img src ="https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=100&q=60">-->
-        </div>
-        <div class="img" data-position="4" id="img4">
-        <!--<img src ="https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=100&q=60">-->
-        </div>
-        <div class="img" data-position="5" id="img5">
-        <!--<img src ="https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=100&q=60">-->
-        </div>
-        <div class="img" data-position="6" id="img6">   
-            <!--<img src ="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80">-->
-            </div>
-            <div class="img" data-position="7" id="img7">
-            <!--<img src ="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80">-->
-            </div>
-            <div class="img" data-position="8" id="img8">
-            <!--<img src ="https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=100&q=60">-->
-            </div>
-            <div class="img" data-position="9" id="img9">
-            <!--<img src ="https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=100&q=60">-->
-            </div>
-            <div class="img" data-position="10" id="img10">
-            <!--<img src ="https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=100&q=60">-->
-            </div>
-        </div> 
+
+<body onload="init();" onscroll="onScroll">
+  <div id="before-footer"></div>
+  <div id="module-one">
+    <div class="slider"></div>
+  </div>
+  <div id="after-footer"></div>
 </body>
-<script src="help.js"></script>
+
 </html>
