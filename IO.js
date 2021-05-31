@@ -5,20 +5,21 @@ const MODULE_ONE_BG_COLORS = [
 ];
 
 let moduleOneSliderVisible = false;
+let lastScrollPosition = 0;
 
 function init() {
   createModuleOneCards();
   seedModuleOne();
   observeModuleOne();
-  // window.onscroll = onScroll;
-  document.body.onscroll = onScroll;
+  window.addEventListener('scroll', onScroll);
 }
 
 function onScroll(e) {
   console.log(e);
   if (moduleOneSliderVisible) {
-    console.log('Do something');
+    advanceModuleOne(window.scrollY > lastScrollPosition);
   }
+  lastScrollPosition = window.scrollY;
 }
 
 function createModuleOneCards() {
@@ -53,16 +54,17 @@ function advanceModuleOne(forward) {
       console.log('Last card');
       return;
     }
-    storePastEl.appendChild(slider.firstChild);
-    slider.appendChild(storeFutureEl.firstChild);
+    storePastEl.appendChild(sliderEl.firstChild);
+    sliderEl.appendChild(storeFutureEl.firstChild);
   } else {
     if (storePastEl.children.length == 0) {
       console.log('First card');
       return;
     }
-    slider.insertBefore(storePast.lastChild, slider.firstChild);
-    storeFuture.insertBefore(slide.lastChild, storeFuture.firstChild);
+    sliderEl.insertBefore(storePastEl.lastChild, sliderEl.firstChild);
+    storeFutureEl.insertBefore(sliderEl.lastChild, storeFutureEl.firstChild);
   }
+  remapModuleOneCardClasses();
 }
 
 function remapModuleOneCardClasses() {
