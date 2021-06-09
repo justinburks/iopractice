@@ -1,0 +1,244 @@
+/*
+Font: 		Distopia
+Style: 		Regular
+URL: 		https://www.youworkforthem.com/font/T13659/distopia-sans
+Foundry: 	Unio Creative Solutions
+Foundry: 	https://www.youworkforthem.com/designer/1498/unio-creative-solutions
+Copyright:	Copyright (c) 2019 by Unio Creative Solutions (unio.ask@gmail.com), with Reserved Font Names (Distopia)
+Version: 	17
+Created:	February 13, 2021
+License: 	https://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@font-face {
+	font-family: 'Distopia-Regular';
+	src: url('distopia-regular.eot');
+	src: url('distopia-regular.eot?#iefix') format('embedded-opentype'),
+             url('distopia-regular.woff2') format('woff2'),
+	     url('distopia-regular.woff') format('woff'),
+	     url('distopia-regular.ttf') format('truetype'),
+	     url('distopia-regular.svg#youworkforthem') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Distopia-Light';
+	src: url('distopia-light.eot');
+	src: url('distopia-light.eot?#iefix') format('embedded-opentype'),
+             url('distopia-light.woff2') format('woff2'),
+	     url('distopia-light.woff') format('woff'),
+	     url('distopia-light.ttf') format('truetype'),
+	     url('distopia-light.svg#youworkforthem') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+    :root {
+        --opac1: 1;
+        --opac2: 0;
+    }
+
+    *, *::before, *::after {
+        box-sizing: inherit;
+    }
+    
+    html {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background:     linear-gradient(45deg, hsla(340, 100%, 55%, .4) 0%,#f0f1f7 70%),
+      linear-gradient(135deg, #f0f1f7 10%, hsla(225, 95%, 50%, 0) 80%),
+      linear-gradient(225deg, rgba(63, 13, 242, 0.281) 50%, hsla(140, 90%, 50%, 0) 80%),
+      linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
+        scroll-behavior: smooth;
+    }
+    
+    nav {
+        position: relative;
+        display: none;
+        top: 0;
+        height: 12vh;
+        width: 100%;
+        background: transparent;
+        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        z-index: 9;
+    }
+    nav ul {
+        position: relative;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .test {
+        position: absolute;
+        top: 14%;
+        bottom: 60%;
+        width: 100%;
+        z-index: 10;
+    }
+
+    header {
+        position: relative;
+        display: grid;
+        height: 100vh; 
+        width: 100vw;
+        margin: 0;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 0px;
+        background: transparent;
+    }
+
+    .heading {
+        grid-area: 1 / 1 / 4 / 8;
+    }
+
+
+    .info {
+        grid-area: 4 / 1 / 8 / 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title {
+        grid-area: 4 / 4 / 8 / 7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .module {
+        grid-area: 2 / 7 / 8 / 15;
+
+    }
+
+    .navButtons {
+        grid-area: 1 / 8 / 2 / 15;
+        background: transparent;
+        backdrop-filter: blur(20px);
+        z-index: 10;
+    }
+    /*
+    header div {
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40%;
+        width: 60%;
+        color: rgba(51, 51, 51, 0.521);
+        font-family: 'Distopia-Light',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 5em;
+    }
+*/
+    [class*="projectModule"] {
+    background-color: transparent;
+    position: relative;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    overflow: auto visible;
+    scroll-behavior: smooth;
+}
+
+.idk {
+    position: absolute;
+    height: 500vh;
+    padding-top: 21rem;
+    padding-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-self: center;
+  
+}
+
+
+[class*="projectModule"]::-webkit-scrollbar {
+    display: none;
+}
+.slider {
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    width: 200%;
+}
+
+[class*="slider"]{
+    transition: all .5s linear;
+}
+.slider1 {
+    opacity: var(--opac1);
+}
+
+.slider2 {
+    opacity: var(--opac2);
+}
+
+[class*="img"] {
+    border-radius: 3rem;
+    display: inline-block;
+    position: relative;
+    height: 10rem;
+    width: 6rem;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    transition: all .3s linear;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    justify-self: center;
+}
+[class*="img"]:hover {
+    perspective: 100px;
+    transform: scale(1.8) !important;
+}
+
+
+
+#img1, #img5 {
+    transform: scale(1.2);
+}
+#img2, #img4 {
+    transform: scale(1.4);
+}
+#img3 {
+    transform: scale(1.6);
+}
+/* ADD POLKA DOT ACCENTS -maybe- */
+
+/* @ fullscreen
+keep nav bar to the left of module with a semi opaque design
+keep module to half of the screen
+
+@ halfscreen and media slide welcome then bring module up
+  then bring buttons under offering a different slide bar
+  add names to the top of the center div and make less opaque as scrolling
+
+  BUTTON ONLY FOR SCROLLING RIGHT ON HALFSCREEN
+  DISPLAY SLIDER(OF 3) WITH A NAME IN YELLOW TOP LEFT TO REPLACE WELCOME AND A LINE TOP LEFT BOTTOM LEFT 
+
